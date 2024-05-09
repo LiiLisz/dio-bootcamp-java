@@ -1,5 +1,9 @@
+import java.util.InputMismatchException;
+import java.util.Locale;
+import java.util.Scanner;
+
 public class ControleFluxo {
-    public static void main(String[] args) throws Exception{
+    public static void main(String[] args) {
     // Estrutura Condicionais: if-else-else if, switch-case       
         double saldo = 25.0;
         double valorSolicitado = 15.0;
@@ -47,6 +51,23 @@ public class ControleFluxo {
             System.out.println(numero);            
         }
 
-    // Estrutura de exceções: try-catch-finally, throw
+    // Estrutura de exceções: try,catch,finally, throw
+    // cacth so é usado se ocorrer erro no try
+        try {
+        Scanner scanner = new Scanner(System.in).useLocale(Locale.ENGLISH);
+        System.out.print("Sua idade: ");
+        int idade = scanner.nextInt();
+
+        System.out.print("Sua altura: ");
+        double altura = scanner.nextInt();
+        
+        System.out.println("Tenho " + idade + " anos");
+        System.out.println("Minha altura é " + altura + " cm");
+        scanner.close();
+
+        } catch (InputMismatchException e) {
+            System.err.println("Os campos idade e altura precisa ser numéricos");
+        }
+        
     }
 }
